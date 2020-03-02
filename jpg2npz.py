@@ -16,7 +16,8 @@ if(len(args)==4):
     df1=pd.read_csv(arg1+"/master_file.csv")
 else:
     df1=pd.read_csv(arg1+"/master_test.csv")
-df2=pd.read_pickle(arg1+"/FileData.pcl")
+df2=pd.read_pickle(arg1+"/ImgList.pcl")
+p_dict=df2.to_dict(orient="index")
 
 np_low=np.zeros((50,200,500))
 np_high=np.zeros((50,200,500))
@@ -29,8 +30,8 @@ for index1, row1 in df1.iterrows():
     for index2, row2 in df3.iterrows():
         f_high=row2["fig_high"]
         f_low=row2["fig_low"]
-        p_high=(df2["PATH"][df2["FNAME"]==f_high]).values[0]
-        p_low=(df2["PATH"][df2["FNAME"]==f_low]).values[0]
+        p_high=p_dict[f_high]['PATH']
+        p_low=p_dict[f_low]['PATH']
         x=row2["x_electrode"]
         y=row2["y_electrode"]
         if(x==0):
