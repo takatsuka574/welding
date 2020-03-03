@@ -33,9 +33,9 @@ for index1, row1 in df1.iterrows():
         p_high=p_dict[f_high]['PATH']
         p_low=p_dict[f_low]['PATH']
         
-        if(p_high[:-3]!="jpg"):
+        if(p_high[-3:]!="jpg"):
             p_high=p_high+"/"+f_high
-        if(p_low[:-3]!="jpg"):
+        if(p_low[-3:]!="jpg"):
             p_low=p_low+"/"+f_low
             
         x=row2["x_electrode"]
