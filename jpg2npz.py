@@ -29,16 +29,23 @@ for index1, row1 in df1.iterrows():
     y0=row1["y_electrode"]
     for index2, row2 in df3.iterrows():
         f_high=row2["fig_high"]
-        f_low=row2["fig_low"]
+        f_low=row2["fig_low　"]
         p_high=p_dict[f_high]['PATH']
         p_low=p_dict[f_low]['PATH']
+        
+        if(p_high[:-3]!="jpg"):
+            p_high=p_high+"/"+f_high
+        if(p_low[:-3]!="jpg"):
+            p_low=p_low+"/"+f_low
+            
         x=row2["x_electrode"]
         y=row2["y_electrode"]
+
         if(x==0):
             x=x0
             y=y0
-        jpg1=cv2.imread(arg2+"/"+p_high+"/"+f_high, cv2.IMREAD_GRAYSCALE)
-        jpg2=cv2.imread(arg2+"/"+p_low+"/"+f_low, cv2.IMREAD_GRAYSCALE)
+        jpg1=cv2.imread(arg2+"/"+p_high, cv2.IMREAD_GRAYSCALE)
+        jpg2=cv2.imread(arg2+"/"+p_low, cv2.IMREAD_GRAYSCALE)
         pimg1=make_polar.to_polar(jpg1,y,x,500)
         pimg2=make_polar.to_polar(jpg2,y,x,500)
         np_high[index2]=pimg1
