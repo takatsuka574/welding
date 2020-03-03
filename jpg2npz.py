@@ -29,7 +29,7 @@ for index1, row1 in df1.iterrows():
     y0=row1["y_electrode"]
     for index2, row2 in df3.iterrows():
         f_high=row2["fig_high"]
-        f_low=row2["fig_low　"]
+        f_low=row2["fig_low"]
         p_high=p_dict[f_high]['PATH']
         p_low=p_dict[f_low]['PATH']
         
